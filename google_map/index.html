@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+      function initialize() {
+        var latlng = new google.maps.LatLng(-34.846142, -58.524578);
+        var settings = {
+          zoom: 15,
+          center: latlng,
+          mapTypeControl: true,
+          mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+          navigationControl: true,
+          navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"), settings);
+        var companyPos = new google.maps.LatLng(-34.846142, -58.524578);
+        var companyLogo = new google.maps.MarkerImage('logo.png',
+        new google.maps.Size(74,88),
+        new google.maps.Point(0,0),
+        new google.maps.Point(50,50)
+      );
+        var companyShadow = new google.maps.MarkerImage('logo_shadow.png',
+        new google.maps.Size(60,36),
+        new google.maps.Point(0,0),
+        new google.maps.Point(20, -5)
+      );
+        //var companyPos = new google.maps.LatLng(-37.0625, -95.677068);
+        var companyMarker = new google.maps.Marker({
+          position: companyPos,
+          map: map,
+          icon: companyLogo,
+          shadow: companyShadow,
+          title:"Red Gull"
+        });
+      }
+    </script>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas" style="width:800px; height:500px"></div>
+  </body>
+
+</html>
